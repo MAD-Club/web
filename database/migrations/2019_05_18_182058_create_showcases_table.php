@@ -15,7 +15,7 @@ class CreateShowcasesTable extends Migration
     {
         Schema::create('showcases', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigIncrements('author_id');
+            $table->bigInteger('author_id')->unsigned();
             $table->string('title');
             $table->longText('description');
             $table->string('file')->nullable();

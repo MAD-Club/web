@@ -85,10 +85,11 @@
                 </div>
 
                 <div class="links">
-                    <a href="#">Events</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Showcase</a>
-                    <a href="#">Executives</a>
+                    <a href="{{ url('events') }}">Events</a>
+                    <a href="{{ url('blogs') }}">Blog</a>
+                    <a href="{{ url('showcases') }}">Showcase</a>
+                    <a href="{{ url('executives') }}">Executives</a>
+                    <a href="{{ url('contact') }}">Contact Us</a>
                 </div>
             </div>
         </div>
