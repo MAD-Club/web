@@ -13,7 +13,7 @@ class BlogController extends Controller {
     }
 
     public function index() {
-        $blogs = Blog::paginate(7);
+        $blogs = Blog::paginate(9);
         return view('blogs.index', compact('blogs'));
     }
 
@@ -35,7 +35,8 @@ class BlogController extends Controller {
             $path = $request->file('file')->storePublicly('', 'public');
             $blog->file = $path;
             $blog->save();
-
+        } else {
+            $blog->save();
         }
         return redirect('blogs');
     }

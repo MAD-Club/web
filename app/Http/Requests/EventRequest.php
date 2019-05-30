@@ -34,7 +34,7 @@ class EventRequest extends FormRequest
             'location' => 'required|min:4',
             'start_date' => 'required|date',
             'start_time' => 'required|min:5|max:8',
-            'end_date' => 'required|date',
+            'end_date' => 'required|date|after_or_equal:start_date',
             'end_time' => 'required|min:5|max:8',
             'description' => 'required|min:10',
         ];

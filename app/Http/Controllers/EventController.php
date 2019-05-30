@@ -34,7 +34,8 @@ class EventController extends Controller
             $path = $request->file('file')->storePublicly('', 'public');
             $event->file = $path;
             $event->save();
-
+        } else {
+            $event->save();
         }
         return redirect('events');
     }

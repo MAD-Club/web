@@ -17,7 +17,9 @@ class CreateShowcasesTable extends Migration
             $table->bigIncrements('id');
             $table->bigInteger('author_id')->unsigned();
             $table->string('title');
-            $table->longText('description');
+            $table->string('description');
+            $table->longText('body');
+            $table->string('url');
             $table->string('file')->nullable();
             $table->timestamps();
         });
