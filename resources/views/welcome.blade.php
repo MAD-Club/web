@@ -9,88 +9,55 @@
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
 
+        <!-- favicon -->
+        <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon">
+
         <!-- Styles -->
+        <link href="{{ asset('css/app.css') }}" rel="stylesheet">
         <style>
             html, body {
-                background-color: #fff;
-                color: #636b6f;
-                font-family: 'Nunito', sans-serif;
-                font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                background: url({{ asset('images/code.jpg') }}) no-repeat fixed;
+                background-size: cover;
             }
 
-            .full-height {
-                height: 100vh;
-            }
-
-            .flex-center {
-                align-items: center;
-                display: flex;
-                justify-content: center;
-            }
-
-            .position-ref {
-                position: relative;
-            }
-
-            .top-right {
-                position: absolute;
-                right: 10px;
-                top: 18px;
-            }
-
-            .content {
-                text-align: center;
-            }
-
-            .title {
-                font-size: 84px;
-            }
-
-            .links > a {
-                color: #636b6f;
-                padding: 0 25px;
-                font-size: 13px;
-                font-weight: 600;
-                letter-spacing: .1rem;
-                text-decoration: none;
-                text-transform: uppercase;
-            }
-
-            .m-b-md {
-                margin-bottom: 30px;
-            }
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Home</a>
-                    @else
-                        <a href="{{ route('login') }}">Login</a>
+        @if (Route::has('login'))
+            <div class="float-right p-1">
+                @auth
+                    <a href="{{ url('/home') }}" class="btn btn-secondary">Home</a>
+                @else
+                    <a href="{{ route('login') }}" class="btn btn-secondary">Login</a>
 
-                        @if (Route::has('register'))
-                            <a href="{{ route('register') }}">Register</a>
-                        @endif
-                    @endauth
-                </div>
-            @endif
-
-            <div class="content">
-                <div class="title m-b-md">
-                    MAD Club
-                </div>
-
-                <div class="links">
-                    <a href="#">Events</a>
-                    <a href="#">Blog</a>
-                    <a href="#">Showcase</a>
-                    <a href="#">Executives</a>
-                </div>
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}" class="btn btn-secondary">Register</a>
+                    @endif
+                @endauth
             </div>
+        @endif
+
+        <div class="container pt-md-5">
+            <img src="{{ asset('images/mad-logo.png') }}" class="img-fluid p-5 mx-auto d-block" width="512">
+
+            <ul class="nav nav-justified flex-md-row flex-column mx-md-auto">
+                <li class="nav-item p-md-1">
+                    <a class="btn btn-primary nav-link" href="{{ url('events') }}">Events</a>
+                </li>
+                <li class="nav-item p-md-1">
+                    <a class="btn btn-secondary nav-link" href="{{ url('blogs') }}">Blog</a>
+                </li>
+                <li class="nav-item p-md-1">
+                    <a class="btn btn-primary nav-link" href="{{ url('showcases') }}">Showcase</a>
+                </li>
+                <li class="nav-item p-md-1">
+                    <a class="btn btn-secondary nav-link" href="{{ url('executives') }}">Executives</a>
+                </li>
+                <li class="nav-item p-md-1">
+                    <a class="btn btn-primary nav-link"  href="{{ url('contact') }}">Contact</a>
+                </li>
+            </ul>
+
         </div>
     </body>
 </html>
