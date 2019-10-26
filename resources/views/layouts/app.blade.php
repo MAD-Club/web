@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>@yield('title', 'MAD Club')</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -22,12 +22,13 @@
     <!-- favicon -->
     <link href="{{ asset('favicon.ico') }}" rel="icon" type="image/x-icon">
 </head>
-<body>
+<body class="bg-primary">
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="@auth {{ url('/home') }} @else {{ url('/') }} @endauth">
-                    {{ config('app.name', 'Laravel') }}
+                    <h1 class="d-none">MAD Club</h1>
+                    <img src="{{ asset('images/mad-logo-sm.png') }}" width="50px"/>
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -36,11 +37,11 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
-                        <li class="nav-item"><a class="nav-link" href="{{ url('events') }}">Events</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('blogs') }}">Blog</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('showcases') }}">Showcase</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('executives') }}">Executives</a></li>
-                        <li class="nav-item"><a class="nav-link" href="{{ url('contact') }}">Contact Us</a></li>
+                        <li class="nav-item"><a class="nav-link @yield('eventsActive')" href="{{ url('events') }}">Events</a></li>
+                        <li class="nav-item"><a class="nav-link @yield('blogsActive')" href="{{ url('blogs') }}">Blog</a></li>
+                        <li class="nav-item"><a class="nav-link @yield('showcasesActive')" href="{{ url('showcases') }}">Showcase</a></li>
+                        <li class="nav-item"><a class="nav-link @yield('executivesActive')" href="{{ url('executives') }}">Executives</a></li>
+                        <li class="nav-item"><a class="nav-link @yield('contactActive')" href="{{ url('contact') }}">Contact Us</a></li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -48,11 +49,11 @@
                         <!-- Authentication Links -->
                         @guest
                             <li class="nav-item">
-                                <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                                <a class="nav-link @yield('loginActive')" href="{{ route('login') }}">{{ __('Login') }}</a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
-                                    <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                                    <a class="nav-link @yield('registerActive')" href="{{ route('register') }}">{{ __('Register') }}</a>
                                 </li>
                             @endif
                         @else
@@ -79,8 +80,10 @@
             </div>
         </nav>
 
-        <main class="py-4">
-            @yield('content')
+        <main class="pt-5 mt-4">
+            <div class="py-4 container bg-white">
+                @yield('content')
+            </div>
         </main>
     </div>
 </body>

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Showcase;
 use App\Http\Requests\ShowcaseRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class ShowcaseController extends Controller
 {
@@ -64,7 +65,7 @@ class ShowcaseController extends Controller
         return redirect('showcases/' . $showcase->id);
     }
 
-    public function destroy(ShowcaseRequest $showcase) {
+    public function destroy(Showcase $showcase) {
         if(isset($showcase->file)) {
             Storage::disk('public')->delete($showcase->file);
         }

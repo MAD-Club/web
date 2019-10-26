@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>@yield('title')</title>
+        <title>@yield('title', 'MAD Club')</title>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="{{ asset('js/app.js') }}"></script>
     </head>

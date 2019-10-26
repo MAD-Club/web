@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Blog;
 use Illuminate\Http\Request;
 use App\Http\Requests\BlogRequest;
+use Illuminate\Support\Facades\Storage;
 
 class BlogController extends Controller {
 
@@ -63,7 +64,7 @@ class BlogController extends Controller {
         return redirect('blogs/' . $blog->id);
     }
 
-    public function destroy(BlogRequest $blog) {
+    public function destroy(Blog $blog) {
         if(isset($blog->file)) {
             Storage::disk('public')->delete($blog->file);
         }

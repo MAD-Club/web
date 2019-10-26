@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Event;
 use App\Http\Requests\EventRequest;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class EventController extends Controller
 {
@@ -63,7 +64,7 @@ class EventController extends Controller
         return redirect('events/' . $event->id);
     }
 
-    public function destroy(EventRequest $event) {
+    public function destroy(Event $event) {
         if(isset($event->file)) {
             Storage::disk('public')->delete($event->file);
         }

@@ -14,7 +14,7 @@ class EventRequest extends FormRequest
      */
     public function authorize()
     {
-        if($this->route()->hasParameter('blog')) {
+        if($this->route()->hasParameter('event')) {
             $event = Event::findOrFail($this->route('event'));
             return $event && $this->user()->can('crud', $event);
         } else {
