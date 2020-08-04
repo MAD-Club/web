@@ -2,7 +2,7 @@
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
-        <title>@yield('title')</title>
+        <title>@yield('title', 'MAD Club')</title>
         <link rel="stylesheet" href="{{asset('css/app.css')}}">
         <script src="{{ asset('js/app.js') }}"></script>
     </head>
@@ -14,6 +14,20 @@
             <li class="nav-item"><a class="nav-link" href="{{ url('showcases') }}">Showcase</a></li>
             <li class="nav-item"><a class="nav-link" href="{{ url('executives') }}">Executives</a></li>
         </ul>
+
+        @if (Route::has('login'))
+            <div class="top-right links">
+                @auth
+                    <a href="{{ url('/home') }}">Home</a>
+                @else
+                    <a href="{{ route('login') }}">Login</a>
+
+                    @if (Route::has('register'))
+                        <a href="{{ route('register') }}">Register</a>
+                    @endif
+                @endauth
+            </div>
+        @endif
 
     </nav>
     <div class="container-fluid text-center">

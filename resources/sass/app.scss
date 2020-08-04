@@ -4,5 +4,14 @@
 // Variables
 @import 'variables';
 
+$theme-colors: (
+    "primary": #3ebaa6,
+    "secondary": #da8f2a
+);
+
+$enable-shadows: true;
+$enable-gradients: true;
+$enable-responsive-font-sizes: true;
+
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
